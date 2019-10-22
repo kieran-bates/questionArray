@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Kieran Bates
+ * October 22, 2019
+ * This program asks a user 10 math problems
  */
 
 package questionarray;
@@ -22,33 +22,33 @@ public class QuestionArray {
         int randomInt;
         String userAnswer;
         int counter = 1;
-        int alreadyAsked = 100;
+        int counterRegen;
+        int alreadyAskedCounter = 0;
+        boolean repeatRegen;
         boolean exit = false;
         boolean correct;
-        boolean repeatRegen = true;
         
         System.out.println("***MATH QUIZ***");
         System.out.println("\nPlease type your answer after the question. 11 to exit.");
         String [] questions = {"\nWhat is 1+1?", "What is 2+5?", "What is 3*2?", "What is 225*63", "What is 7*6?", "What is 3*7?", "What is 24-5?", "What is 30+11?", "What is 27-4?", "What is 255*276?"};
         String [] answers = {"2", "7", "6", "14175", "42", "21", "19", "41", "23", "70380"};
+        int [] alreadyAsked = {1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000};
         
         while (exit == false)
         {
         randomInt = (int)(Math.random() * 9+1);
-        
-        if(randomInt == alreadyAsked)
+        counterRegen = 1;
+        repeatRegen = true;
+        while(repeatRegen = true)
         {
-            while(repeatRegen == true)
+            if(alreadyAsked[counterRegen] == randomInt || counterRegen == 10)
             {
                 randomInt = (int)(Math.random() * 9+1);
-                if (randomInt == alreadyAsked)
-                {
-                    
-                }
-                if (randomInt != alreadyAsked)
-                {
-                    repeatRegen = false;
-                }
+                repeatRegen = false;
+            }
+            else
+            {
+                counterRegen = counterRegen+1;
             }
         }
         
@@ -59,18 +59,18 @@ public class QuestionArray {
         if(userAnswer.equals(answers[randomInt]))
         {
             correct = true;
-            alreadyAsked = randomInt;
         }
         else
         {
             correct = false;
-            alreadyAsked = randomInt;
         }
         
         if (correct == true)
         {
             System.out.println("Correct!");
             counter = counter + 1;
+            alreadyAsked[alreadyAskedCounter] = randomInt;
+            alreadyAskedCounter = alreadyAskedCounter+1;
         }
         if (counter == 10)
         {
@@ -84,6 +84,8 @@ public class QuestionArray {
         {
             System.out.println("Incorrect!");
             counter = counter + 1;
+            alreadyAsked[alreadyAskedCounter] = randomInt;
+            alreadyAskedCounter = alreadyAskedCounter+1;
         }
     }
   }
