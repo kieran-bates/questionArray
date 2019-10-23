@@ -18,74 +18,52 @@ public class QuestionArray {
      */
     public static void main(String[] args) {
         
-        Scanner input = new Scanner(System.in);
-        int randomInt;
-        String userAnswer;
-        int counter = 1;
-        int counterRegen;
-        int alreadyAskedCounter = 0;
-        boolean repeatRegen;
-        boolean exit = false;
-        boolean correct;
+        Scanner input = new Scanner(System.in); //New scanner for user input
+        int randomInt; //Random int variable
+        String userAnswer; //User answer string
+        int counter = 1; //Program loop counter
+        boolean exit = false; //Exit variable
+        boolean correct; //Boolean that stores whether the answer is correct or incorrect
         
-        System.out.println("***MATH QUIZ***");
+        System.out.println("***MATH QUIZ***"); //Print user prompts and store answers in arrays
         System.out.println("\nPlease type your answer after the question. 11 to exit.");
         String [] questions = {"\nWhat is 1+1?", "What is 2+5?", "What is 3*2?", "What is 225*63", "What is 7*6?", "What is 3*7?", "What is 24-5?", "What is 30+11?", "What is 27-4?", "What is 255*276?"};
         String [] answers = {"2", "7", "6", "14175", "42", "21", "19", "41", "23", "70380"};
-        int [] alreadyAsked = {1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000};
         
-        while (exit == false)
+        while (exit == false) //Repeat program until exit is true
         {
-        randomInt = (int)(Math.random() * 9+1);
-        counterRegen = 1;
-        repeatRegen = true;
-        while(repeatRegen = true)
+        randomInt = (int)(Math.random() * 9+1); //store a random int between 0 and 10 to randomInt
+        
+        System.out.print("\n" + questions[randomInt] + " --> "); //Prompt for user input
+        
+        userAnswer = input.next(); //Wait for next user input and store input
+        
+        if(userAnswer.equals(answers[randomInt])) //Is the answer correct?
         {
-            if(alreadyAsked[counterRegen] == randomInt || counterRegen == 10)
-            {
-                randomInt = (int)(Math.random() * 9+1);
-                repeatRegen = false;
-            }
-            else
-            {
-                counterRegen = counterRegen+1;
-            }
+            correct = true; 
         }
-        
-        System.out.print("\n" + questions[randomInt] + " --> ");
-        
-        userAnswer = input.next();
-        
-        if(userAnswer.equals(answers[randomInt]))
-        {
-            correct = true;
-        }
-        else
+        else //Is the answer incorrect?
         {
             correct = false;
         }
         
-        if (correct == true)
+        if (correct == true) //If the answer is correct
         {
-            System.out.println("Correct!");
-            counter = counter + 1;
-            alreadyAsked[alreadyAskedCounter] = randomInt;
-            alreadyAskedCounter = alreadyAskedCounter+1;
+            System.out.println("Correct!"); //Print "Correct!" to the screen
+            counter = counter + 1; //Advance question counter
         }
-        if (counter == 10)
+        if (counter == 10) //If 10 questions have been asked
         {
             exit = true;
         }
-        if (userAnswer.equals("Exit")||userAnswer.equals("exit"))
+        if (userAnswer.equals("Exit")||userAnswer.equals("exit")) //If the user types exit
         {
             exit = true;
         }
-        if (correct == false)
+        if (correct == false) //If the answer is incorrect
         {
-            System.out.println("Incorrect!");
-            counter = counter + 1;
-            alreadyAsked[alreadyAskedCounter] = randomInt;
-            alreadyAskedCounter = alreadyAskedCounter+1;
+            System.out.println("Incorrect!"); //Print "Incorrect!" to the screen
+            counter = counter + 1; //Advance question counter
         }
     }
   }
