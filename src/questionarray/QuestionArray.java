@@ -22,6 +22,7 @@ public class QuestionArray {
         int randomInt; //Random int variable
         String userAnswer; //User answer string
         int counter = 1; //Program loop counter
+        final int programCycles = 10;
         boolean exit = false; //Exit variable
         boolean correct; //Boolean that stores whether the answer is correct or incorrect
         
@@ -52,7 +53,7 @@ public class QuestionArray {
             System.out.println("Correct!"); //Print "Correct!" to the screen
             counter = counter + 1; //Advance question counter
         }
-        if (counter == 10) //If 10 questions have been asked
+        if (counter == programCycles) //If 10 questions have been asked
         {
             exit = true;
         }
