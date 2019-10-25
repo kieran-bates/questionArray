@@ -39,6 +39,11 @@ public class QuestionArray {
         
         userAnswer = input.next(); //Wait for next user input and store input
         
+        if (userAnswer.equals("Exit")||userAnswer.equals("exit")) //If the user types exit
+        {
+            exit = true;
+        }
+        
         if(userAnswer.equals(answers[randomInt])) //Is the answer correct?
         {
             correct = true; 
@@ -53,18 +58,16 @@ public class QuestionArray {
             System.out.println("Correct!"); //Print "Correct!" to the screen
             counter = counter + 1; //Advance question counter
         }
-        if (counter == programCycles) //If 10 questions have been asked
-        {
-            exit = true;
-        }
-        if (userAnswer.equals("Exit")||userAnswer.equals("exit")) //If the user types exit
-        {
-            exit = true;
-        }
+        
         if (correct == false) //If the answer is incorrect
         {
             System.out.println("Incorrect!"); //Print "Incorrect!" to the screen
             counter = counter + 1; //Advance question counter
+        }
+        
+        if (counter == programCycles) //If 10 questions have been asked
+        {
+            exit = true;
         }
     }
   }
